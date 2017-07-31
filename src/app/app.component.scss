@@ -1,0 +1,21 @@
+
+.users {
+  &__cell {
+    border-bottom: 1px solid #9c9c9c;
+    vertical-align: middle;
+  }
+  &__btn {
+    text-align: center;
+  }
+}
+
+.row_active {
+    background-color: rgba(86, 156, 110, .3);
+}
+
+.cell {
+  &_btn {
+    width: 70%;
+    vertical-align: middle;
+  }
+}

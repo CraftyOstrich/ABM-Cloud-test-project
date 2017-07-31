@@ -1,3 +1,54 @@
-<h1>
-  {{title}}
-</h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="title">Users</h2>
+    <table class="table table-hover" [formGroup]="userForm">
+      <thead>
+      <tr class="users__row">
+        <th class="users__cell">
+          Id
+        </th>
+        <th class="users__cell">
+          <input class="form-control cell_input" type="text"
+                 formControlName="name" placeholder="Name" id="name">
+        </th>
+        <th class="users__cell">
+
+          <input class="form-control cell_input" type="email"
+                 formControlName="email"  placeholder="Email" id="email">
+        </th>
+        <th class="users__cell users__btn">
+          <button (click)="onUpdateUser(userForm)"
+                  [disabled]="!userForm.valid" class="btn btn-primary cell_btn">
+            {{ userForm.value.id ? 'Update User' : 'Add User'}}
+          </button>
+
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="users__row"
+          *ngFor="let user of users; let i = index"
+          (click)="onEditUser(user)"
+          [ngClass]="{row_active: userForm.value.id === user.id}"
+          [@fadeIn]="user">
+        <td class="users__cell">
+          {{ user.id }}
+        </td>
+        <td class="users__cell">
+          {{ user.name }}
+        </td>
+        <td class="users__cell">
+          {{ user.email }}
+        </td>
+        <td class="users__cell users__btn">
+          <button (click)="onDeleteUser(i)"
+                  class="btn btn-danger btn-xs cell_btn"> Delete </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
